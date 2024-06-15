@@ -17,5 +17,20 @@ Function Invoke-CollatzConjecture() {
         [Int64]$Number
     )
 
-    Throw "Please implement this function"
+    if ($Number -le 0) {
+        throw "error: Only positive numbers are allowed"
+    }
+
+    $steps = 0
+    while (-not($Number -eq 1)) {
+        $steps += 1
+        if ($Number % 2 -eq 0) {
+            $Number = $Number / 2
+        }
+        else {
+            $Number = 3 * $Number + 1
+        }
+    }
+
+    return $steps
 }
