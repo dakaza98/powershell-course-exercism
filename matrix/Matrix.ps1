@@ -23,7 +23,8 @@ Function Invoke-Row() {
         [int]$Index
     )
 
-    Throw "Please implement this function"
+    $rows = $String.Split([Environment]::NewLine)
+    return $rows[$Index - 1].Split(" ")
 }
 
 Function Invoke-Column() {
@@ -51,5 +52,16 @@ Function Invoke-Column() {
         [int]$Index
     )
 
-    Throw "Please implement this function"
+    $rows = $String.Split([Environment]::NewLine)
+    $matrix = @()
+    Foreach ($row in $rows) {
+        $matrix += , $row.Split(" ")
+    }
+
+    $column = @()
+    foreach ($row in $matrix) {
+        $column += $row[$Index - 1]
+    }
+
+    return $column
 }
